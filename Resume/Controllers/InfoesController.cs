@@ -22,9 +22,9 @@ namespace Resume.Controllers
         // GET: Infoes
         public async Task<IActionResult> Index()
         {
-              return _context.Info != null ? 
-                          View(await _context.Info.ToListAsync()) :
-                          Problem("Entity set 'ResumeContext.Info'  is null.");
+            return _context.Info != null ?
+                        View(await _context.Info.ToListAsync()) :
+                        Problem("Entity set 'ResumeContext.Info'  is null.");
         }
 
         // GET: Infoes/Details/5
@@ -56,7 +56,7 @@ namespace Resume.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("info_id,userid,password,name,address,email,phone,social_media_link,summary")] Info info)
+        public async Task<IActionResult> Create([Bind("info_id,name,password,github_link,address,email,phone,social_media_link,summary,designation")] Info info)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace Resume.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("info_id,userid,password,name,address,email,phone,social_media_link,summary")] Info info)
+        public async Task<IActionResult> Edit(int id, [Bind("info_id,name,password,github_link,address,email,phone,social_media_link,summary,designation")] Info info)
         {
             if (id != info.info_id)
             {
@@ -150,14 +150,14 @@ namespace Resume.Controllers
             {
                 _context.Info.Remove(info);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool InfoExists(int id)
         {
-          return (_context.Info?.Any(e => e.info_id == id)).GetValueOrDefault();
+            return (_context.Info?.Any(e => e.info_id == id)).GetValueOrDefault();
         }
     }
 }

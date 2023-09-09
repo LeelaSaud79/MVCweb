@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Resume.Data;
-using Resume.Helpers;
+//using Resume.Helpers;
 using Resume.Models;
 
 namespace Resume.APIController
 {
-    //[APIAuthKey]
+    [APIAuthKey]
     [Route("api/[controller]")]
     [ApiController]
     public class SkillsController : ControllerBase

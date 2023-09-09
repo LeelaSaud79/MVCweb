@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
-using Resume.Data;
-using Resume.Helpers;
-using Resume.Models;
-
+﻿
 //namespace Resume.APIController
 //{
 //    //[APIKeyAuth]
@@ -110,10 +99,22 @@ using Resume.Models;
 //        }
 //    }
 //}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
+using Resume.Data;
+using Resume.Helpers;
+using Resume.Models;
+
 
 namespace Resume.APIControllers
 {
-    //[APIAuthKey]
+    [APIAuthKey]
     [Route("api/[controller]")]
     [ApiController]
     public class InfosController : ControllerBase
