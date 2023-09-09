@@ -126,7 +126,7 @@ namespace Resume.APIControllers
         }
         [HttpGet]
         [Route("~/api/login")]
-        public async Task<ActionResult<Info>> GetInfos()
+        public async Task<ActionResult<InfoesVM>> GetLogin()
         {
             HttpContext.Request.Headers.TryGetValue("UserEmail", out var userEmail);
             HttpContext.Request.Headers.TryGetValue("Password", out var password);
@@ -147,11 +147,24 @@ namespace Resume.APIControllers
             {
                 return NotFound("Wrong password");
             }
-            return info;
+            var userViewModel = new InfoesVM
+            {
+                info_id = info.info_id,
+                name = info.name,
+                github_link = info.github_link,
+                address = info.address,
+                email = info.email,
+                phone = info.phone,
+                social_media_link = info.social_media_link,
+                summary = info.summary,
+                designation = info.designation,    
+            };
+            return userViewModel;
         }
+    
 
-        // GET: api/Experiences/5
-        [HttpGet("{id}")]
+    // GET: api/Experiences/5
+    [HttpGet("{id}")]
         public async Task<ActionResult<List<Info>>> GetInfo(int id)
         {
             if (_context.Info == null)
